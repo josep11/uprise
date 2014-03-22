@@ -6,6 +6,13 @@ var User_Vote = require('../model/user_vote'),
 
 exports.get = function(req, res){
 
+    User_Vote.count({}, function(err, c)
+        {
+            console.log('Numero de vots TOTAAAAAAALS = ' + c);
+            if ( c == 0 ) return res.json({ok: false, err: "There is no employee of the month yet. No one has voted."});
+
+        });
+
     User_Vote
         .aggregate(
         { $group: {
