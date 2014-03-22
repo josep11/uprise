@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="306d2cea-8aa0-40fd-bbb3-bbf89e7b0398" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/employee_month.js" afterPath="$PROJECT_DIR$/controller/employee_month.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -30,7 +29,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="1" selection-start="2056" selection-end="2056" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3468">
+            <state line="14" column="0" selection-start="452" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="3468">
               <folding />
             </state>
           </provider>
@@ -39,7 +38,7 @@
       <file leaf-file-name="employee_month.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/employee_month.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="2" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.85061514" vertical-offset="196" max-vertical-offset="935">
+            <state line="26" column="44" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.7768014" vertical-offset="0" max-vertical-offset="986">
               <folding />
             </state>
           </provider>
@@ -137,6 +136,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../uPrise" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -180,7 +180,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -216,14 +216,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="1" selection-start="2056" selection-end="2056" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3468">
+        <state line="14" column="0" selection-start="452" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="3468">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/employee_month.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="2" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.85061514" vertical-offset="196" max-vertical-offset="935">
+        <state line="26" column="44" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.7768014" vertical-offset="0" max-vertical-offset="986">
           <folding />
         </state>
       </provider>
