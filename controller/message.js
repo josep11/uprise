@@ -72,7 +72,7 @@ exports.create = function(req, res) {
             }
         });
 
-    return res.json({message: message, ok: true});
+    return res.json({message: message, ok: true}); //TODO TESTEJAR A VEURE SI FALLA
 
 };
 
@@ -143,7 +143,6 @@ exports.updateSurvey = function(req, res) {
     {
         if (err || message == null || message == undefined) return res.json({ok: false, err: "Maybe this is no longer a message and it has been moved to surveys"});
 
-        //TODO votacio guardant mail
         message.votes++;
 
         message.save(function(err)

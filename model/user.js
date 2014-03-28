@@ -12,7 +12,7 @@ var UserSchema = new Schema({
     email: { type: String, required: true, unique: true },
     image: {type: Schema.Types.ObjectId, ref: 'Image' , required: false},
     active: {type: Boolean, required: false, default: false, select: false},
-    isAmo: {type: Boolean, required:false, default: false, select: false},
+    isAmo: {type: Boolean, required:false, default: false}, //, select: false}, //que sino no va el user.type
     password: {type: String, required: false, select: false}
 });
 

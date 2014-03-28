@@ -33,6 +33,7 @@ exports.get = function(req, res){
                         //return false;
                     }
                     req.params.id = result[0].user_votat;
+                    console.log("L'empleat del mes es "+req.params.id);
                     user.getOne(req,res); //Retornara les dades de l'employee of the month
                 });
         }

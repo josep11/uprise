@@ -8,28 +8,35 @@ exports.create = function (req, res)
 
      if ( paramsOk(res, user_votador, user_votat) )
     {
-        console.log("intento votar");
 
-        //Votar sempre i quan no s'hagi votat abans
-        User_Vote.findOne({user_votador : user_votador, user_votat: user_votat})
-            .exec(function (err, user_vote)
-            {
-                if (err)  return res.json({ok: false, err: err});
-                if (user_vote) return res.json({ok: false, err: "Vot incorrecte, ja s'ha votat abans"}); //Si existeix retornem que el vot ja existeix
-
-                //Si no existeix el creem
-                user_vote = new User_Vote({
-                    user_votador : user_votador,
-                    user_votat : user_votat
-                });
-
-                user_vote.save(function(err)
+        User.findOne({_id: user_votat}, function(err, result)
+        {
+            if (!result || err) return res.json({ok:false, err: "The user that you are trying to vote does not exist"});
+            console.log("intento votar");
+            //Votar sempre i quan no s'hagi votat abans
+            User_Vote.findOne({user_votador : user_votador, user_votat: user_votat})
+                .exec(function (err, user_vote)
                 {
-                    if (err) return res.json({ok: false, err: err});
-                    return res.json({user_vote: user_vote, ok: true }); //PROVISIONAL NO RETORNAR: DADES SENSIBLES
-                    //return res.json({ ok: true , msg: "Votació realitzada satisfactòriament"});
+                    if (err)  return res.json({ok: false, err: err});
+                    if (user_vote) return res.json({ok: false, err: "Vot incorrecte, ja s'ha votat abans"}); //Si existeix retornem que el vot ja existeix
+
+
+                    user_vote = new User_Vote({ //Si no existeix el creem
+                        user_votador : user_votador,
+                        user_votat : user_votat
+                    });
+
+                    user_vote.save(function(err)
+                    {
+                        if (err) return res.json({ok: false, err: err});
+                        return res.json({user_vote: user_vote, ok: true }); //PROVISIONAL NO RETORNAR: DADES SENSIBLES
+                        //return res.json({ ok: true , msg: "Votació realitzada satisfactòriament"});
+                    });
                 });
-            });
+
+
+        });
+
     }
 
 
@@ -56,6 +63,11 @@ function paramsOk(res, user_votador, user_votat)
     if (!user_votador || !user_votat){
         res.json({ok: false, err: "Params o body especificats incorrectes. Pot ser que no existeixi usuari votat o usuari votador"});
         return false;
+    }else if (user_votat.localeCompare(user_votador) == 0)
+    {
+            res.json({ok: false, err: "No et pots votar a tu mateix"});
+            return false;
     }
+
     return true;
 }

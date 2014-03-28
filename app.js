@@ -12,8 +12,9 @@ var app = express();
 
 require('./routes/config')(app,express,path,__dirname); //Configuro
 
-mongoose.connect('mongodb://admin:filos@oceanic.mongohq.com:10096/uprise');
-//mongoose.connect('mongodb://localhost/uPrise');
+
+//mongoose.connect('mongodb://admin:filos@oceanic.mongohq.com:10096/uprise');
+mongoose.connect('mongodb://localhost/uPrise');
 
 mongoose.connection.on("connected", function()
 {
@@ -32,30 +33,31 @@ function setRoutes()
 
     //app.get('/api/*', function(){console.log("api");});
 
-    app.get('/api/users',           user.get);
-    app.get('/api/users/:id',       user.getOne);
-    app.post('/api/users',          user.create);
-    app.put('/api/users/:id',       user.update);
-    app.delete('/api/users/:id',    user.delete);
+    app.get('/api/users',                   user.get);
+    app.get('/api/users/:id',               user.getOne);
+    app.post('/api/users',                  user.create);
+    app.put('/api/users/:id',               user.update);
+    app.delete('/api/users/:id',            user.delete);
+    app.post('/api/users/auth',             user.auth);
 
-    app.get('/api/messages',        message.get);
-    app.get('/api/messages/:id',    message.getOne);
-    app.post('/api/messages',       message.create);
-    app.put('/api/messages/:id',    message.update);
-    app.delete('/api/messages/:id', message.deleteMessage);
+    app.get('/api/messages',                message.get);
+    app.get('/api/messages/:id',            message.getOne);
+    app.post('/api/messages',               /*user.exists,*/ user.justEmployee,  message.create);
+    app.put('/api/messages/:id',            message.update);
+    app.delete('/api/messages/:id',         user.justAmo, message.deleteMessage);
 
-    app.get('/api/surveys',         message.getSurvey);
-    app.get('/api/surveys/:id',     message.getOneSurvey);
-    //app.put('/api/surveys/:id',   message.updateSurvey); //No es cridarà mai ja que les votacions es fan des de surveys/vote/:id
-    app.delete('/api/surveys/:id',  message.deleteSurvey);
+    app.get('/api/surveys',                 message.getSurvey);
+    app.get('/api/surveys/:id',             message.getOneSurvey);
+    //app.put('/api/surveys/:id',           message.updateSurvey); //No es cridarà mai ja que les votacions es fan des de surveys/vote/:id
+    app.delete('/api/surveys/:id',          user.justAmo, message.deleteSurvey);
 
-    app.post('/api/messages/vote/:id',       message.createMessageVote);
-    app.post('/api/surveys/vote/:id',        message.createSurveyVote);
+    app.post('/api/messages/vote/:id',      user.justEmployee,   message.createMessageVote);
+    app.post('/api/surveys/vote/:id',       user.justEmployee,   message.createSurveyVote);
 
-    app.post('/api/users/vote/:id',          user_vote.create);
-    app.delete('/api/users/vote/:id',        user_vote.delete);
+    app.post('/api/users/vote/:id',         user.exists,   user_vote.create);
+    app.delete('/api/users/vote/:id',       user.exists,   user_vote.delete);
 
-    app.get('/api/employee_month',           employee_month.get);
+    app.get('/api/employee_month',          employee_month.get);
 
 }
 

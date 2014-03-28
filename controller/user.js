@@ -5,8 +5,10 @@ var User = require('../model/user'),
 
 exports.get = function(req, res){
 
-    User.find()
-        .select(' -__v')
+   User.find()
+       //.where('isAmo',false)
+       //User.find({isAmo:false}) //TODO DESCOMENTAR, NOMES SERVEIX PER DEBUGAR
+        .select(' -__v')// -isAmo') //TODO DESCOMENTAR, NOMES SERVEIX PER DEBUGAR
         .populate('image')
         .exec (function (err, users) {
         if (!err) {
@@ -44,12 +46,13 @@ exports.create = function(req, res) {
 
         image.save();
 
+
         var user = new User({
             name: req.body.name,
             email: req.body.email,
             surnames: req.body.surnames,
             image: image,
-            isAmo: req.body.isAmo,
+            isAmo: ( req.body.isAmo ?  req.body.isAmo : false),
             password: req.body.password
         });
 
@@ -131,8 +134,58 @@ exports.delete = function(req, res) {
     });
 }
 
-
-function urlOk(url)
+exports.exists = function(req, res, next)
 {
-    return url.indexOf('www.') > -1;
+    User.findOne({ _id: req.body.user_id }, function(err, user) {
+        if(user == null) {
+            return res.json({ok: false, err: "user does not exist"});
+        } else
+        {
+            next();
+        }
+    });
+}
+
+//Retorna si l'usuari és empleat o amo segons l'email
+exports.auth = function(req, res)
+{
+    User.findOne({ email: req.body.email }, function(err, user) {
+        if(user == null) {
+            return res.json({ok: false, err: "user does not exist"});
+        } else
+        {
+            if(err) return res.json({ok: false, err: err});
+
+            user.active = true;
+            user.save();
+
+            return res.json({ok: true, user:user});
+        }
+    });
+}
+
+exports.justAmo = function(req, res, next)
+{
+    User.findOne({ _id: req.body.user_id}, function(err, user) {
+        if(user == null) {
+            return res.json({ok: false, err: "User does not exist"});
+        } else
+        {
+            if (user.isAmo == false) return res.json({ok: false, err: "You don't have the permissions to do this. Only bosses can."});
+            next();
+        }
+    });
+}
+
+exports.justEmployee = function(req, res, next)
+{
+    User.findOne({ _id: req.body.user_id}, function(err, user) {
+        if(user == null) {
+            return res.json({ok: false, err: "User does not exist"});
+        } else
+        {
+            if (user.isAmo == true) return res.json({ok: false, err: "You don't have the permissions to do this."});
+            next();
+        }
+    });
 }
