@@ -13,8 +13,8 @@ var app = express();
 require('./routes/config')(app,express,path,__dirname); //Configuro
 
 
-//mongoose.connect('mongodb://admin:filos@oceanic.mongohq.com:10096/uprise');
-mongoose.connect('mongodb://localhost/uPrise');
+mongoose.connect('mongodb://admin:filos@oceanic.mongohq.com:10096/uprise');
+//mongoose.connect('mongodb://localhost/uPrise');
 
 mongoose.connection.on("connected", function()
 {
