@@ -40,9 +40,12 @@ function pujaImatge(req,res,id)
     var targetPath = '/images/' + id,
         oldPath = req.files.userPhoto.path;
 
-    //console.log("path userfoto "+oldPath);
-    //console.log("target path = "+targetPath);
-
+		console.log("\n\n\n");
+    console.log("path userfoto "+oldPath);
+    console.log("target path = "+targetPath);
+		console.log("\n\n\n");
+	
+	
     require('fs').rename(
         oldPath,
         './public' + targetPath,
