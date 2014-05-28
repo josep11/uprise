@@ -1,0 +1,119 @@
+extends layout
+
+block content
+    h1.
+        Users
+    table.table.table-striped
+        thread
+            tr.font-big
+                th Nom
+                th Cognoms
+                th Email
+                th Image
+                th Edit
+                th Delete
+        tbody#taula
+
+            each user, i in userlist
+                tr.alinear-mig
+                    form.uploadForm(enctype='multipart/form-data', action='/api/photos', method='post', id='form-#{user.id}')
+                        th.col-md-4
+                            input(
+                                type="text"
+                                value="#{user.name}"
+                                class="userName"
+                                required)
+                        th.col-md-4
+                            input(
+                                type="text"
+                                value="#{user.surnames}"
+                                class="userSurnames"
+                                required)
+                        th.col-md-4
+                            input(
+                                type="text"
+                                value="#{user.email}"
+                                class="userEmail"
+                                required)
+
+                            input(
+                                type="hidden"
+                                value="#{user._id}"
+                                id="#{user._id}"
+                                class="userId"
+                                name="id")
+                            input.userPhotoInput(type='file', name='userPhoto', style="visibility:hidden; display:none")
+                        th.col-md-3
+                            img(
+                                src="#{user.image.url}"
+                                width=70
+                                height=70
+                                class="imatge botonsEditar"
+                                onclick="clicaUserPhotoInput(event)"
+                                )
+                        th.col-md-
+                            img(
+                                src="/images/edit.png"
+                                width=32
+                                height=32
+                                class="botonsEditar edit"
+                            )
+                        th.col-md-1
+                            img(
+                                src="/images/delete.png"
+                                width=32
+                                height=32
+                                class="botonsEditar delete"
+                            )
+
+
+    h1.
+        Add users
+
+    div
+        form.uploadForm(enctype='multipart/form-data', action='/api/photos', method='post', id='form-new-user')
+            input(
+                id="name"
+                type="text"
+                placeholder="Name"
+                )
+            input(
+                id="surnames"
+                type="text"
+                placeholder="Surnames"
+                )
+            input(
+                id="email"
+                type="text"
+                placeholder="Email"
+                )
+            span
+                img(
+                    src="http://faytoday.com/wp-content/uploads/2013/03/default_profile.jpg"
+                    width=54
+                    height=54
+                    class="imatge botonsEditar"
+                    onclick="clicaUserPhotoInput(event,true)"
+                )
+
+            input(
+                id="enviar"
+                type="button"
+                value="Enviar"
+                class="botonsEditar")
+
+            input.newUserPhotoInput(type='file', name='userPhoto', style="visibility:hidden")
+        // p#status 'ee'
+
+    //form.uploadForm(enctype='multipart/form-data', action='/api/photos', method='post')
+        input.userPhotoInput(type='file', name='userPhoto', style="visibility:hidden")
+
+
+    script(type="text/javascript"
+        src="/javascripts/admin.js")
+    script(type="text/javascript"
+        src="/javascripts/jquery.form.js")
+    script(type="text/javascript"
+        src="/javascripts/upload.js")
+    script(type="text/javascript"
+        src="/javascripts/humane.min.js")

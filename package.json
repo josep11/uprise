@@ -9,6 +9,8 @@
     "express": "3.4.8",
     "jade": "*",
     "mongodb": "*",
-	"mongoose": "*"
+	"mongoose": "*",
+	"connect-multiparty":"*",
+	"crypto":"latest"
   }
 }

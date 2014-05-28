@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+.imatge{
+ border: 1px dashed #00B7FF;
+}
+
+.botonsEditar{
+    cursor: pointer;
+   /* width: 32px;
+    height: 32px;*/
+}
+
+.font-big{
+    font-size:26px;
+}
+.alinear-mig
+{
+    vertical-align: middle;
+}

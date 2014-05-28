@@ -27,9 +27,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
+
 function setRoutes()
 {
-    app.get('/', routes.index);
+    app.get('/', routes.admin);
+    app.get('/admin', routes.admin);
 
     //app.get('/api/*', function(){console.log("api");});
 
@@ -59,11 +64,13 @@ function setRoutes()
 
     app.get('/api/employee_month',          employee_month.get);
 
+    app.post('/api/photos', multipartMiddleware,  routes.photos);
 }
-
 setRoutes();
-
 app.listen(app.get('port')); //Equivalent al de sota
+
+
+
 /*
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
