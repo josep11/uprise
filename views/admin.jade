@@ -44,8 +44,14 @@ block content
                                 name="id")
                             input.userPhotoInput(type='file', name='userPhoto', style="visibility:hidden; display:none")
                         th.col-md-3
+                        
+                            if user.image
+                                - var p=user.image.url
+                            else
+                                - var p="<br>"
+                        
                             img(
-                                src="#{user.image.url}"
+                                src="#{p}"
                                 width=70
                                 height=70
                                 class="imatge botonsEditar"
