@@ -1,6 +1,13 @@
 var User = require('../model/user'),
     crypto  =require('crypto');
 
+exports.angular = function(req, res){
+    res.render('angular', {
+        yourName: 'Josep'
+    });
+};
+
+
 exports.admin = function(req, res){
     User.find()
         .select(' -__v')// -isAmo') //TODO DESCOMENTAR, NOMES SERVEIX PER DEBUGAR
