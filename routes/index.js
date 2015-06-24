@@ -2,9 +2,10 @@ var User = require('../model/user'),
     crypto  =require('crypto');
 
 exports.angular = function(req, res){
-    res.render('angular', {
+    res.sendfile('views/angular.html');
+    /*res.render('angular', {
         yourName: 'Josep'
-    });
+    });*/
 };
 
 
