@@ -6,11 +6,12 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "connect-multiparty": "*",
+    "crypto": "latest",
+    "ejs": "^2.3.1",
     "express": "3.4.8",
     "jade": "*",
     "mongodb": "*",
-	"mongoose": "*",
-	"connect-multiparty":"*",
-	"crypto":"latest"
+    "mongoose": "*"
   }
 }

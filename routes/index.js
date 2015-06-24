@@ -1,10 +1,17 @@
 var User = require('../model/user'),
     crypto  =require('crypto');
 
+
+
 exports.angular = function(req, res){
-    res.render('angular', {
-        yourName: 'Josep'
+//   res.send('aaa'); return;
+    res.render('demo', {
+        //yourName: 'Josep'
     });
+};
+
+exports.prova = function(req, res){
+    res.render('prova', {});  
 };
 
 

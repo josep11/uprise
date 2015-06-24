@@ -11,7 +11,10 @@ module.exports = function(app, express, path, dirname)
     'use strict';
     app.set('port', process.env.PORT || port);
     app.set('views', path.join(dirname, 'views'));
-    // app.set('view engine', 'jade');
+   // app.set('view engine', 'jade');
+
+    app.engine('html', require('ejs').renderFile);
+    app.set('view engine', 'html');
 
     app.use(express.favicon());
     app.use(express.logger('dev'));

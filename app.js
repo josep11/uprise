@@ -3,7 +3,8 @@ var routes = require('./routes');
 var user = require('./controller/user'),
     message = require('./controller/message'),
     user_vote = require('./controller/user_vote'),
-    employee_month = require('./controller/employee_month');
+    employee_month = require('./controller/employee_month'),
+    image = require('./controller/image');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
@@ -34,10 +35,14 @@ var multipartMiddleware = multipart();
 function setRoutes()
 {
     app.get('/', routes.angular);
+    app.get('/prova', routes.prova);
     // app.get('/', routes.admin);
     app.get('/admin', routes.admin);
 
     //app.get('/api/*', function(){console.log("api");});
+
+    app.get('/api/images',                   image.get);
+    app.get('/api/images/:id',               image.getOne);
 
     app.get('/api/users',                   user.get);
     app.get('/api/users/:id',               user.getOne);
