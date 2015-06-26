@@ -3,7 +3,7 @@ var User = require('../model/user'),
 
 
 
-exports.angular = function(req, res){
+exports.demo = function(req, res){
 //   res.send('aaa'); return;
     res.render('demo', {
         //yourName: 'Josep'

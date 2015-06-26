@@ -11,7 +11,7 @@ module.exports = function(app, express, path, dirname)
     'use strict';
     app.set('port', process.env.PORT || port);
     app.set('views', path.join(dirname, 'views'));
-   // app.set('view engine', 'jade');
+   //app.set('view engine', 'jade');
 
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'html');
@@ -27,7 +27,10 @@ module.exports = function(app, express, path, dirname)
     app.use(express.cookieParser('your secret here'));
     app.use(express.session());
     app.use(app.router);
+    
     app.use(express.static(path.join(dirname, 'public')));
+    //serve static templates from folder
+    app.use('/templates', express.static(path.join(dirname, 'public', 'templates')));
     
     //In order to use bower components as <script src="/bower_components/..."></script>
     app.use('/bower_components', express.static(path.join(dirname, 'bower_components')));

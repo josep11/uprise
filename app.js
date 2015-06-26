@@ -34,9 +34,8 @@ var multipartMiddleware = multipart();
 
 function setRoutes()
 {
-    app.get('/', routes.angular);
+    app.get('/', routes.demo);
     app.get('/prova', routes.prova);
-    // app.get('/', routes.admin);
     app.get('/admin', routes.admin);
 
     //app.get('/api/*', function(){console.log("api");});

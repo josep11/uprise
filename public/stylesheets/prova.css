@@ -1,0 +1,13 @@
+.user{
+    transition: all ease 0.2s;
+    -moz-transition: all ease 0.2s;
+    -webkit-transition: all ease 0.2s;
+    -o-transition: all ease 0.2s;
+    overflow: hidden;
+    max-height: 0;
+    display:none;
+}
+
+.show{
+    display:block !important;
+}

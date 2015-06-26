@@ -1,0 +1,17 @@
+<tr>
+    <td>
+<button class="btn" ng-click="editUser(user.id)">
+<span class="glyphicon glyphicon-pencil"></span>  Edit
+</button>
+</td>
+
+    <td>
+<button class="btn" ng-click="deleteUser(user.id)">
+<span class="glyphicon glyphicon-trash"></span>  Delete
+</button>
+</td>
+
+<td ng-bind="user.fName"></td>
+<td >{{user.lName}}</td>
+
+</tr>
